@@ -7,7 +7,8 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 10px;
+    background-color: rgba(193, 218, 106, 0.1);
 }
 
 h1 {
@@ -17,7 +18,7 @@ h1 {
     text-align: center;
     padding: 0;
     color: black;
-    background: url(img/scroll.avif) center no-repeat;
+    background: url(img/scroll.png) center no-repeat;
     background-size: 100% 200px;
     border-radius: 50px;
     width: 600px;
@@ -43,13 +44,15 @@ h1 {
     font-size: 2em;
     width: 300px;
     height: 70px;
-    background-image: url(img/plank.jpg);
+    background-image: url(img/plank.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     border: none;
     transition: .1s;
     text-shadow: 1px 1px 5px black;
+    cursor: pointer;
+    background-color: transparent;
 }
 
 .btn:active {
@@ -60,6 +63,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    margin-top: 30px;
 }
 
 .cell {
@@ -68,4 +72,9 @@ h1 {
     height: 150px;
     width: 150px;
     border: 2px solid black;
+}
+
+.cell:hover {
+    background-color: rgba(0, 255, 255, 0.2);
+    cursor: pointer;
 }
