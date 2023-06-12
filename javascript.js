@@ -12,27 +12,30 @@ function choice (event) {
     play += 1
     console.log(play)
     if (play % 2 === 0) {
+        event.target.innerHTML = '<img src="img/yang.jpeg">'
         P2.push(val)
-        console.log('Player 2')
+        
     } else {
+        event.target.innerHTML = '<img src="img/yin.jpeg">'
         P1.push(val)
-        console.log('Player 1')
     }
-    console.log(P1.values)
-    console.log(P2.values)
+    setTimeout(() => {
+        checkWin()
+    }, 1000);
+}
+
+function checkWin () {
     for (let i = 0; i<winCon.length; i++) {
-        if (P1.toString() == winCon[i].toString()) {
+        if (winCon[i].every(r => P1.includes(r))) {
             alert('P1 wins')
             resetGame()
-        }
-        if (P2.toString() == winCon[i].toString()) {
+        } else if (winCon[i].every(r => P2.includes(r))) {
             alert('P2 wins')
             resetGame()
+        } else if (play > 9) {
+            alert('TIE')
+            resetGame()
         }
-    }
-    if (play == 9) {
-        alert('TIE')
-        resetGame()
     }
 }
 
