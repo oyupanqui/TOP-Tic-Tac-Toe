@@ -10,17 +10,20 @@ function choice (event) {
     const val = event.target.classList[1]
     event.target.removeAttribute("onClick")
     play += 1
-    console.log(play)
     if (play % 2 === 0) {
-        event.target.innerHTML = '<img src="img/yang.jpeg">'
+        event.target.innerHTML = '<img src="img/yang.jpeg" draggable=false>'
         P2.push(val)
         
     } else {
-        event.target.innerHTML = '<img src="img/yin.jpeg">'
+        event.target.innerHTML = '<img src="img/yin.jpeg" draggable=false>'
         P1.push(val)
     }
     setTimeout(() => {
         checkWin()
+        if (play == 9) {
+            alert('TIE')
+            resetGame()
+        }
     }, 1000);
 }
 
@@ -31,9 +34,6 @@ function checkWin () {
             resetGame()
         } else if (winCon[i].every(r => P2.includes(r))) {
             alert('P2 wins')
-            resetGame()
-        } else if (play > 9) {
-            alert('TIE')
             resetGame()
         }
     }
