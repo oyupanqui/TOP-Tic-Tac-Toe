@@ -1,5 +1,7 @@
 let gameMode;
 const cells = document.getElementsByClassName("cell")
+const left = document.getElementsByClassName("left-panel")
+const right = document.getElementsByClassName("right-panel")
 
 let play = 0
 
@@ -7,15 +9,19 @@ let P1 = []
 let P2 = []
 
 function choice (event) {
+    right[0].innerHTML = ''
+    left[0].innerHTML = ''
     const val = event.target.classList[1]
     event.target.removeAttribute("onClick")
     play += 1
     if (play % 2 === 0) {
         event.target.innerHTML = '<img src="img/yang.jpeg" draggable=false>'
+        left[0].innerHTML = "Player One's turn"
         P2.push(val)
         
     } else {
         event.target.innerHTML = '<img src="img/yin.jpeg" draggable=false>'
+        right[0].innerHTML = "Player Two's turn"
         P1.push(val)
     }
     setTimeout(() => {
@@ -30,9 +36,13 @@ function choice (event) {
 function checkWin () {
     for (let i = 0; i<winCon.length; i++) {
         if (winCon[i].every(r => P1.includes(r))) {
+            right[0].innerHTML = ''
+            left[0].innerHTML = ''
             alert('P1 wins')
             resetGame()
         } else if (winCon[i].every(r => P2.includes(r))) {
+            right[0].innerHTML = ''
+            left[0].innerHTML = ''
             alert('P2 wins')
             resetGame()
         }
@@ -46,6 +56,7 @@ const winCon = [["11", "12", "13"], ["21", "22", "23"], ["31", "32", "33"],
 function resetGame() {
     for (let i = 0; i < cells.length; i++) {
         cells[i].innerHTML = ''
+        left[0].innerHTML = "Player One's turn"
         P1 = []
         P2 = []
         play = 0

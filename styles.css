@@ -73,6 +73,28 @@ h1:hover {
 }
 
 .game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-panel, .right-panel {
+    width: 300px;
+    font-family: chineseAsian;
+    font-size: 2em;
+    text-align: center;
+}
+
+.left-panel {
+    text-shadow: 1px 1px 10px blue;
+}
+
+.right-panel {
+    text-shadow: 1px 1px 10px red;
+}
+
+.grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
