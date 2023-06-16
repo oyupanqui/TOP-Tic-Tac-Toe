@@ -3,6 +3,9 @@ let gameMode;
 function vs(elem) {
     gamemode = elem
     resetGame()
+    if (elem === 'ai') {
+        alert('Currently only vs Player is supported')
+    }
 }
 
 const cells = document.getElementsByClassName("cell")
@@ -22,6 +25,7 @@ function resetGame() {
     for (let i = 0; i < cells.length; i++) {
         cells[i].innerHTML = ''
         left[0].innerHTML = "Player One's turn"
+        right[0].innerHTML = ""
         P1 = []
         P2 = []
         play = 0
@@ -47,9 +51,12 @@ function choice (event) {
     }
     setTimeout(() => {
         checkWin()
-        if (play == 9) {
-            alert('TIE')
-            resetGame()
+        if (play == 9 && (right[0].innerHTML!= 'Player Two wins!' || left[0].innerHTML!= 'Player One wins!')) {
+            right[0].innerHTML = 'TIE!'
+            left[0].innerHTML = 'TIE!'
+            setTimeout(() => {
+                resetGame()
+            }, 1000)
         }
     }, 1000);
 }
